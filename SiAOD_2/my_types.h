@@ -1,2 +1,2 @@
 #pragma once
-using Function = int (*)(char*, int, char);
+using Function = void (*)(int* nums, int size);

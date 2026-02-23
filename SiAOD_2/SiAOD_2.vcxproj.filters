@@ -21,15 +21,24 @@
     <ClCompile Include="inser_sort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="efficency.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fill_array.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="selection_sort.h">
+    <ClInclude Include="sort_methods.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="efficency.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="my_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fill_array.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

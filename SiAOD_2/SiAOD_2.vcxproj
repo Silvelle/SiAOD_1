@@ -127,13 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="efficency.cpp" />
     <ClCompile Include="inser_sort.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="fill_array.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="efficency.h" />
+    <ClInclude Include="fill_array.h" />
     <ClInclude Include="my_types.h" />
-    <ClInclude Include="selection_sort.h" />
+    <ClInclude Include="sort_methods.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
