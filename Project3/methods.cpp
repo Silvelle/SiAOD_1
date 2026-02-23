@@ -5,14 +5,11 @@ int delOtherMethod(char* x, int n, char key) {
     int countCmps = 0;
     int countMoves = 0;
     int j = 0;
-    ++countCmps;
-    for (int i = 0; i < n; ++i) {
-        ++countCmps;
+    for (int i = 0; ++countCmps && i < n; ++i) {
         ++countMoves;
         x[j] = x[i];
         ++countCmps;
         if (x[i] != key) {
-            ++countCmps;
             ++j;
         }
     }
@@ -30,6 +27,7 @@ int delOtherMethod(char* x, int n, char key) {
     std::cout << "\t\tC: " << countCmps << " ";
     std::cout << "\t\tM: " << countMoves << " ";
     std::cout << "\t\tT: " << countMoves + countCmps << " ";
+    std::cout << std::endl;
     return n;
 }
 
@@ -37,14 +35,12 @@ int delFirstMethod(char* x, int n, char key) {
     int countCmps = 0;
     int countMoves = 0;
     int i = 0;
-    ++countCmps;
-    while (i < n) {
-        ++countCmps;
+
+    while (++countCmps && i < n) {
         ++countCmps;
         if (x[i] == key) {
-            ++countCmps;
-            for (int j = i; j < n; ++j) {
-                ++countCmps;
+            
+            for (int j = i; ++countCmps && j < n; ++j) {
                 ++countMoves;
                 x[j] = x[j + 1];
             }
@@ -57,6 +53,6 @@ int delFirstMethod(char* x, int n, char key) {
     std::cout << "\t\tC: " << countCmps << " ";
     std::cout << "\t\tM: " << countMoves << " ";
     std::cout << "\t\tT: " << countMoves + countCmps << " ";
-
+    std::cout << std::endl;
     return n;
 }

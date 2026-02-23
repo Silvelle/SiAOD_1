@@ -21,7 +21,6 @@ void variousCaseTest(Function funcPtr, const std::vector<int>& data) {
         fillArray(nums, size);
         std::cout << "SIZE OF ARRAY: " << size << std::endl;
         measureTime(funcPtr, nums, size);
-        printArray(nums, size);
         delete[] nums;
         nums = nullptr;
     }
