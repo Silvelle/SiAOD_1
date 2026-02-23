@@ -2,6 +2,7 @@
 #include <cassert>
 #include "unit_tests.h"
 #include "cstring"
+#include "fill_array.h"
 #include "unit_tests.h"
 void TestFunc(Function funcPtr) {
     // Test 1 Найден символ
@@ -46,4 +47,22 @@ void TestFunc(Function funcPtr) {
     }
 
     std::cout << "Tests are OK" << std::endl;
+}
+void TestParse() {
+    {
+        int size = 10;
+        char* chars = new char[size];
+        parseInt(chars, 123456789);
+        assert(strcmp(chars, "123456789") == 0);
+        delete[] chars;
+    }
+
+    {
+        int size = 2;
+        char* chars = new char[size];
+        parseInt(chars, -1);
+        assert(strcmp(chars, "-1") == 0);
+        assert(strlen(chars) == 2);
+    }
+
 }

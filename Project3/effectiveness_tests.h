@@ -4,6 +4,9 @@
 #include "my_types.h"
 
 void measureTime(Function funcPtr, char* chr, int n, char key);
-void RunTest(Function funcPtr, int size, char typeOfTest);
+void worstCaseTest(Function funcPtr, const std::vector<int>& data);
+void mediumCaseBothTest(Function funcPtr_1, Function funcPtr_2, const std::vector<int>& data);
+void bestCaseTest(Function funcPtr_1, const std::vector<int>& data);
+void runTest(Function funcPtr_1, Function funcPtr_2, const std::vector<int>& data);
 
 #endif
