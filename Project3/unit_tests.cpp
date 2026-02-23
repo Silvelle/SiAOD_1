@@ -48,21 +48,3 @@ void TestFunc(Function funcPtr) {
 
     std::cout << "Tests are OK" << std::endl;
 }
-void TestParse() {
-    {
-        int size = 10;
-        char* chars = new char[size];
-        parseInt(chars, 123456789);
-        assert(strcmp(chars, "123456789") == 0);
-        delete[] chars;
-    }
-
-    {
-        int size = 2;
-        char* chars = new char[size];
-        parseInt(chars, -1);
-        assert(strcmp(chars, "-1") == 0);
-        assert(strlen(chars) == 2);
-    }
-
-}

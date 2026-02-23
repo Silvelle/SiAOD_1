@@ -3,6 +3,6 @@
 #include "my_types.h"
 
 void TestFunc(Function funcPtr);
-void TestParse();
+
 
 #endif

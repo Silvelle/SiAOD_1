@@ -4,4 +4,5 @@
     <Platform Name="x86" />
   </Configurations>
   <Project Path="Project3/Project3.vcxproj" Id="983dce96-6417-4358-8758-d0ac6cf4e9a8" />
+  <Project Path="SiAOD_2/SiAOD_2.vcxproj" Id="aad587e8-56f7-4585-abfe-67e813005864" />
 </Solution>
