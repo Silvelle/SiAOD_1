@@ -56,10 +56,10 @@ void downCaseTest(Function funcPtr, const std::vector<int>& data) {
     std::cout << std::endl;
 }
 
-void runTest(Function funcPtr_1, const std::vector<int>& data) {
-    std::cout << "Test for first algorithm" << std::endl;
-    variousCaseTest(funcPtr_1, data);
-}
+//void runTest(Function funcPtr_1, const std::vector<int>& data) {
+//    std::cout << "Test for first algorithm" << std::endl;
+//    variousCaseTest(funcPtr_1, data);
+//}
 
 void runTest2(Function funcPtr_1, const std::vector<int>& data) {
     std::cout << "SELECTION_SORT Test for down nums" << std::endl;
@@ -69,10 +69,10 @@ void runTest2(Function funcPtr_1, const std::vector<int>& data) {
 }
 
 void runTest3(Function funcPtr_1, const std::vector<int>& data) {
-    std::cout << "BUBBLE_SORT Test for various nums" << std::endl;
-    grownCaseTest(funcPtr_1, data);
+     std::cout << "BUBBLE_SORT Test for various nums" << std::endl;
+    variousCaseTest(funcPtr_1, data);
     std::cout << "BUBBLE_SORT Test for down nums" << std::endl;
-    downCaseTest(funcPtr_1, data);
+//    downCaseTest(funcPtr_1, data);
     std::cout << "BUBBLE_SORT Test for grown algorithm" << std::endl;
     grownCaseTest(funcPtr_1, data);
 }

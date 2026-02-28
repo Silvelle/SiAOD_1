@@ -3,6 +3,11 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Project3/Project3.vcxproj" Id="983dce96-6417-4358-8758-d0ac6cf4e9a8" />
-  <Project Path="SiAOD_2/SiAOD_2.vcxproj" Id="aad587e8-56f7-4585-abfe-67e813005864" />
+  <Project Path="experiments/experiments.vcxproj" Id="4fbba9fd-d85f-4b4d-b21e-e53a61448012" />
+  <Project Path="Project3/Project3.vcxproj" Id="983dce96-6417-4358-8758-d0ac6cf4e9a8">
+    <BuildType Solution="Debug|x86" Project="Release" />
+  </Project>
+  <Project Path="SiAOD_2/SiAOD_2.vcxproj" Id="aad587e8-56f7-4585-abfe-67e813005864">
+    <BuildType Solution="Debug|x86" Project="Release" />
+  </Project>
 </Solution>

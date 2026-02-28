@@ -42,6 +42,20 @@ void TestFunc(Function funcPtr) {
 
         n = funcPtr(x, n, key);
         assert(strcmp(x, "") == 0);
+        assert(n == 0);
+        assert(x[n] == '\0');
+        delete[] x;
+    }
+
+    {
+        char* x = new char[6];
+        strcpy(x, "ababa");
+        int n = 5;
+        char key = 'b';
+
+        n = funcPtr(x, n, key);
+        assert(strcmp(x, "aaa") == 0);
+        assert(n == 3);
         assert(x[n] == '\0');
         delete[] x;
     }
