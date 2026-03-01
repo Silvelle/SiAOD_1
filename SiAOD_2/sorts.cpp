@@ -2,25 +2,22 @@
 #include <utility>
 #include <iostream>
 void selectionSort(int* a, int length) {
-    size_t countCmps = 0;     
-    size_t countMoves = 0;    
-
+    size_t countCmps = 0;
+    size_t countMoves = 0;
+    countMoves++;          // инициализация i = 0
     for (int i = 0; ++countCmps && i < length - 1; ++i) {
-        countMoves++;          // инициализация i = 0
-        countMoves++;          // инкремент i++
-
         int min = i;
         countMoves++;          // присваивание min = i
 
-            countMoves++;      // инициализация j = i + 1
+        countMoves++;      // инициализация j = i + 1
         for (int j = i + 1; ++countCmps && j < length; ++j) {
-            countMoves++;      // инкремент j++
 
             countCmps++;       // сравнение a[j] < a[min]
             if (a[j] < a[min]) {
                 min = j;
                 countMoves++;  // присваивание min = j
             }
+            countMoves++;      // инкремент j++
         }
 
         countCmps++;           // сравнение min != i
@@ -28,6 +25,7 @@ void selectionSort(int* a, int length) {
             std::swap(a[i], a[min]);
             countMoves += 3;   // swap = 3 присваивания
         }
+        countMoves++;          // инкремент i++
     }
 
     std::cout << "\t\tC: " << countCmps << " ";
@@ -38,14 +36,11 @@ void selectionSort(int* a, int length) {
 void bubbleSort(int* a, int length) {
     size_t countCmps = 0;
     size_t countMoves = 0;
-
-        ++countMoves;               // инициализация j = 1
+    ++countMoves;               // инициализация j = 1
     for (int j = 1; ++countCmps && j < length - 1; ++j) {
-        ++countMoves;               // инкремент j++
 
-            ++countMoves;           // инициализация i = 0
+        ++countMoves;           // инициализация i = 0
         for (int i = 0; ++countCmps && i < length - 1 - j; ++i) {
-            ++countMoves;           // инкремент i++
 
             ++countCmps;
             if (a[i] > a[i + 1])
@@ -53,7 +48,9 @@ void bubbleSort(int* a, int length) {
                 std::swap(a[i], a[i + 1]);
                 countMoves += 3;    // swap = 3 присваивания
             }
+            ++countMoves;           // инкремент i++
         }
+        ++countMoves;               // инкремент j++
     }
 
     std::cout << "\t\tC: " << countCmps << " ";

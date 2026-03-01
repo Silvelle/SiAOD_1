@@ -3,6 +3,10 @@
 #include <vector>
 #include "efficency.h"
 #include "fill_array.h"
+#include <thread>
+#include <mutex>
+
+std::mutex cout_mutex;
 
 void measureTime(Function funcPtr, int* nums, int size) {
     auto start = std::chrono::steady_clock::now();
@@ -15,6 +19,7 @@ void measureTime(Function funcPtr, int* nums, int size) {
 }
 
 void variousCaseTest(Function funcPtr, const std::vector<int>& data) {
+    std::lock_guard<std::mutex> lock(cout_mutex);
     std::cout << "Test for random nums: " << std::endl;
     for (int size : data) {
         int* nums = new int[size];
@@ -29,6 +34,7 @@ void variousCaseTest(Function funcPtr, const std::vector<int>& data) {
 }
 
 void grownCaseTest(Function funcPtr, const std::vector<int>& data) {
+    std::lock_guard<std::mutex> lock(cout_mutex);
     std::cout << "Test for grown nums: " << std::endl;
     for (int size : data) {
         int* nums = new int[size];
@@ -43,6 +49,7 @@ void grownCaseTest(Function funcPtr, const std::vector<int>& data) {
 }
 
 void downCaseTest(Function funcPtr, const std::vector<int>& data) {
+    std::lock_guard<std::mutex> lock(cout_mutex);
     std::cout << "Test for down nums: " << std::endl;
     for (int size : data) {
         int* nums = new int[size];
@@ -61,18 +68,28 @@ void downCaseTest(Function funcPtr, const std::vector<int>& data) {
 //    variousCaseTest(funcPtr_1, data);
 //}
 
-void runTest2(Function funcPtr_1, const std::vector<int>& data) {
-    std::cout << "SELECTION_SORT Test for down nums" << std::endl;
-    downCaseTest(funcPtr_1, data);
-    std::cout << "SELECTION_SORT Test for grown algorithm" << std::endl;
-    grownCaseTest(funcPtr_1, data);
-}
 
-void runTest3(Function funcPtr_1, const std::vector<int>& data) {
-     std::cout << "BUBBLE_SORT Test for various nums" << std::endl;
-    variousCaseTest(funcPtr_1, data);
-    std::cout << "BUBBLE_SORT Test for down nums" << std::endl;
-//    downCaseTest(funcPtr_1, data);
-    std::cout << "BUBBLE_SORT Test for grown algorithm" << std::endl;
-    grownCaseTest(funcPtr_1, data);
+void runTest(Function funcPtr_1, Function funcPtr_2, const std::vector<int>& data) {
+    std::cout << "I.\tTEST FOR SELECTION SORT" << std::endl;
+    std::cout << "selectionSort1" << std::endl;
+    std::thread t1(variousCaseTest, funcPtr_1, data);
+    t1.join();
+    std::cout << "selectionSort2" << std::endl;
+    std::thread t2(grownCaseTest, funcPtr_1, data);
+    t2.join();
+    std::cout << "selectionSort3" << std::endl;
+    std::thread t3(downCaseTest, funcPtr_1, data);
+    t3.join();
+
+    std::cout << "II.\tTEST FOR BUBBLE SORT" << std::endl;
+    std::cout << "buubleSort1" << std::endl;
+    std::thread t4(variousCaseTest, funcPtr_2, data);
+    t4.join();
+    std::cout << "buubleSort2" << std::endl;
+    std::thread t5(grownCaseTest, funcPtr_2, data);
+    t5.join();
+    std::cout << "buubleSort3" << std::endl;
+    std::thread t6(downCaseTest, funcPtr_2, data);
+    t6.join();
+
 }
