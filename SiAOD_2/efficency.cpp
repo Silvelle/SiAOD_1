@@ -5,7 +5,7 @@
 #include "fill_array.h"
 #include <thread>
 #include <mutex>
-
+#include <sstream> 
 std::mutex cout_mutex;
 
 void measureTime(Function funcPtr, int* nums, int size, std::stringstream& ss) {
@@ -67,40 +67,47 @@ void downCaseTest(Function funcPtr, const std::vector<int>& data, std::stringstr
 
 
 void runTest(Function funcPtr_1, Function funcPtr_2, const std::vector<int>& data) {
-    std::cout << "I.\tTEST FOR SELECTION SORT" << std::endl;
+    
     std::stringstream ss1;
-    std::thread t1(variousCaseTest, funcPtr_1, data, ss1);
+    ss1 << "I.\tTEST FOR SELECTION SORT" << std::endl;
+    std::thread t1(variousCaseTest, funcPtr_1, data, std::ref(ss1));
 
     std::stringstream ss2;
-    std::thread t2(grownCaseTest, funcPtr_1, data, ss2);
+    std::thread t2(grownCaseTest, funcPtr_1, data, std::ref(ss2));
 
     std::stringstream ss3;
-    std::thread t3(downCaseTest, funcPtr_1, data, ss3);
+    std::thread t3(downCaseTest, funcPtr_1, data, std::ref(ss3));
 
 
-    std::cout << "II.\tTEST FOR BUBBLE SORT" << std::endl;
+    
     std::stringstream ss4;
-    std::thread t4(variousCaseTest, funcPtr_2, data, ss4);
+    ss4 << "II.\tTEST FOR BUBBLE SORT" << std::endl;
+    std::thread t4(variousCaseTest, funcPtr_2, data, std::ref(ss4));
 
 
     std::stringstream ss5;
-    std::thread t5(grownCaseTest, funcPtr_2, data, ss5);
+    std::thread t5(grownCaseTest, funcPtr_2, data, std::ref(ss5));
 
 
     std::stringstream ss6;
-    std::thread t6(downCaseTest, funcPtr_2, data, ss6);
+    std::thread t6(downCaseTest, funcPtr_2, data, std::ref(ss6));
 
-    t1.join();
+    if(t1.joinable()) t1.join();
     std::cout << ss1.str() << std::endl;
-    t2.join();
+
+    if (t2.joinable()) t2.join();
     std::cout << ss2.str() << std::endl;
-    t3.join();
+
+    if (t3.joinable()) t3.join();
     std::cout << ss3.str() << std::endl;
-    t4.join();
+    
+    if (t4.joinable()) t4.join();
     std::cout << ss4.str() << std::endl;
-    t5.join();
+
+    if (t5.joinable()) t5.join();
     std::cout << ss5.str() << std::endl;
-    t6.join();
+
+    if (t6.joinable()) t6.join();
     std::cout << ss6.str() << std::endl;
 
 }
