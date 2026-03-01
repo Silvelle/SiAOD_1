@@ -1,7 +1,10 @@
 #include "sort_methods.h"
 #include <utility>
 #include <iostream>
-void selectionSort(int* a, int length) {
+#include <sstream>
+
+
+void selectionSort(int* a, int length, std::stringstream& ss) {
     size_t countCmps = 0;
     size_t countMoves = 0;
     countMoves++;          // инициализация i = 0
@@ -28,12 +31,12 @@ void selectionSort(int* a, int length) {
         countMoves++;          // инкремент i++
     }
 
-    std::cout << "\t\tC: " << countCmps << " ";
-    std::cout << "\t\tM: " << countMoves << " ";
-    std::cout << "\t\tT: " << countMoves + countCmps << " ";
+    ss << "\t\tC: " << countCmps << " ";
+    ss << "\t\tM: " << countMoves << " ";
+    ss << "\t\tT: " << countMoves + countCmps << " ";
 }
 
-void bubbleSort(int* a, int length) {
+void bubbleSort(int* a, int length, std::stringstream& ss) {
     size_t countCmps = 0;
     size_t countMoves = 0;
     ++countMoves;               // инициализация j = 1
@@ -53,7 +56,7 @@ void bubbleSort(int* a, int length) {
         ++countMoves;               // инкремент j++
     }
 
-    std::cout << "\t\tC: " << countCmps << " ";
-    std::cout << "\t\tM: " << countMoves << " ";
-    std::cout << "\t\tT: " << countMoves + countCmps << " ";
+    ss << "\t\tC: " << countCmps << " ";
+    ss << "\t\tM: " << countMoves << " ";
+    ss << "\t\tT: " << countMoves + countCmps << " ";
 }

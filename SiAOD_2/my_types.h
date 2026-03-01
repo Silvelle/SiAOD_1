@@ -1,2 +1,4 @@
 #pragma once
-using Function = void (*)(int* nums, int size);
+#include <sstream>
+#include <iostream>
+using Function = void (*)(int* nums, int size, std::stringstream& ss);

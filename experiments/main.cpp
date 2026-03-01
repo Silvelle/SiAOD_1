@@ -2,31 +2,32 @@
 #include <chrono>
 #include <thread>
 #include <mutex>
+#include <sstream>
 
 std::mutex cout_mutex;
 
+std::stringstream str;
+
 int func1(int n) {
 
-    std::lock_guard<std::mutex> lock(cout_mutex);
-    std::this_thread::sleep_for(std::chrono::milliseconds(15000));
+    std::this_thread::sleep_for(std::chrono::milliseconds(20000));
     std::cout << "The first functions" << std::endl;
     for (int i = 0; i < n; ++i) {
-        std::cout << "1_1_test1" << std::endl;
-        std::cout << "1_2_test1" << std::endl;
-        std::cout << "1_3_test1" << std::endl;
+        str << "1_1_test1" << std::endl;
+        str << "1_2_test1" << std::endl;
+        str << "1_3_test1" << std::endl;
     }
     
     return n;
 }
-
+std::stringstream str1;
 int func2(int n) {
-    std::lock_guard<std::mutex> lock(cout_mutex);
-    std::cout << "The second functions" << std::endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(10000));
+    std::cout << "The second functions" << std::endl;
     for (int i = 0; i < n; ++i) {
-        std::cout << "2_2_test1" << std::endl;
-        std::cout << "2_3_test1" << std::endl;
-        std::cout << "2_4_test1" << std::endl;
+        str1 << "2_2_test1" << std::endl;
+        str1 << "2_3_test1" << std::endl;
+        str1 << "2_4_test1" << std::endl;
     }
 
     return n;
@@ -36,10 +37,13 @@ int main()
 {
     auto start = std::chrono::steady_clock::now();
     std::thread  t1(func1, 10);
-    t1.join();
+    
 
     std::thread  t2(func2, 10);
+    t1.join();
+    std::cout << str.str() << std::endl;
     t2.join();
+    std::cout << str1.str() << std::endl;
 
     
     auto end = std::chrono::steady_clock::now();
